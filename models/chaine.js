@@ -1,0 +1,117 @@
+'use strict';
+
+const {
+    Model
+} = require('sequelize');
+
+const socketService = require("../services/socket_service")
+module.exports = (sequelize, DataTypes) => {
+    class Chaine extends Model {
+
+        static associate(models) {
+            // ville 
+            this.belongsTo(models.Ville, {
+                foreignKey: {
+                    name: 'ville',
+                    field: "ville",
+                    allowNull: true
+                }
+            })
+            models.Ville.hasMany(this, {
+                foreignKey: {
+                    name: "ville",
+                    field: "ville",
+                    allowNull: true
+                }
+            })
+                   // emission
+                      this.belongsTo(models.Emission, {
+                            foreignKey: { name: 'emission', field:"emission", allowNull: true }
+                        })
+                        models.Emission.hasMany(this, {
+                            foreignKey: { name: "emission", field: "emission", allowNull: true }
+                        })
+
+
+        }
+    }
+    Chaine.init({
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+            comment: "ID"
+        },
+        nom: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            comment: "Nom"
+        },
+        description: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            comment: 'Description'
+        },
+        frequence: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "",
+            comment: "Fréquence"
+        },
+        lienradio: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "",
+            comment: "Lien radio"
+        },
+        lientv: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: "",
+            comment: "Lien TV"
+        },
+        lienyoutube: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
+            comment: "Lien TV Youtube?"
+        },
+        emissionfilmee: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
+            comment: "Emission en live filmée?"
+        },
+        heuredebut: {
+            type: DataTypes.TIME,
+            allowNull: false,
+            comment: 'heure de début'
+        },
+        heurefin: {
+            type: DataTypes.TIME,
+            allowNull: false,
+            comment: "heure de fin"
+        },
+
+        actif: {
+              type:DataTypes.BOOLEAN,
+              allowNull:false,
+              defaultValue: true,
+              comment: "Actif?"
+            },
+    }, {
+        sequelize,
+        modelName: 'Chaine',
+        tableName: "chaine",
+        freezeTableName: true,
+        timestamps: false
+    });
+
+    Chaine.afterBulkUpdate("hookAU", (chaine, options) => {
+
+    console.log("Mise à jour de la table chaine")
+        socketService.envoiMesage("chaine", "misajour")
+
+      })
+    return Chaine;
+};
