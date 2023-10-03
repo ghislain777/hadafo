@@ -99,6 +99,12 @@ module.exports = (sequelize, DataTypes) => {
               defaultValue: true,
               comment: "Actif?"
             },
+            typedechaine: {
+                  type:DataTypes.STRING,
+                  allowNull:false,
+                  defaultValue: "radio",
+                  comment: "Type de chaine"
+                },
     }, {
         sequelize,
         modelName: 'Chaine',

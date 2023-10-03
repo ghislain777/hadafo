@@ -250,6 +250,15 @@
                     "field": "actif",
                     "seqType": "Sequelize.BOOLEAN"
                 },
+                "typedechaine": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": "radio"
+                    },
+                    "comment": "Type de chaine",
+                    "field": "typedechaine",
+                    "seqType": "Sequelize.STRING"
+                },
                 "ville": {
                     "allowNull": true,
                     "name": "ville",
@@ -932,5 +941,5 @@
     "path": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current.json",
     "backupPath": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current_bak.json",
     "exists": true,
-    "revision": 18
+    "revision": 19
 }
