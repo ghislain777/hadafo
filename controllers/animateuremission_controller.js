@@ -43,10 +43,19 @@ animateuremissionController.getAll = async (req, res) => {
     let page = 1;
     itemsPerPage = req.query.itemsPerPage == undefined ? 30 : req.query.itemsPerPage
     page = req.query.page == undefined ? 1 : req.query.page
-    const parametres = fonctions.removeNullValues(req.query)
+    const chaine = req.query.chaine 
+    console.log(chaine)
+    console.log( chaine == "")
+    const parametres1 = fonctions.removeNullValues(req.query)
+    const parametres = delete parametres1[chaine]
     const parametresRequete = fonctions.removePaginationkeys(parametres)
+    
+    
+const linclude = chaine == "" ? animateuremissionController.includeAnimateuremission :  
+[
+    {model:Animateur, include:[Media]}, {model:Emission, where:{chaine:chaine}, include:[Chaine]},
+]
     try {
-
 
         const resultat = await Animateuremission.findAndCountAll({
             offset: (page - 1) * itemsPerPage,
@@ -58,7 +67,7 @@ animateuremissionController.getAll = async (req, res) => {
                 ...parametresRequete
 
             },
-            include: animateuremissionController.includeAnimateuremission,
+            include: linclude,
         })
         res.send(resultat)
     } catch (err) {
