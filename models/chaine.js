@@ -26,9 +26,11 @@ module.exports = (sequelize, DataTypes) => {
             })
                    // emission
                       this.belongsTo(models.Emission, {
+                        as: 'endirect',
                             foreignKey: { name: 'emission', field:"emission", allowNull: true }
                         })
                         models.Emission.hasMany(this, {
+                            as: 'meschaines',
                             foreignKey: { name: "emission", field: "emission", allowNull: true }
                         })
 

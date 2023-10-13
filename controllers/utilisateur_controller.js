@@ -4,13 +4,13 @@ const { response, request } = require('express');
 const { where } = require('sequelize');
 const { Sequelize, Op } = require('sequelize');
 const fonctions = require('../fonctions');
-const {  Utilisateur, Menu, Activite, Privilege, Role} = require('../models');
+const {  Utilisateur, Menu, Activite, Privilege, Role, Chaine} = require('../models');
     
 const utilisateurController = {}
 
 utilisateurController.includeUtilisateur = [
 
-        Role,
+        Role, Chaine
     
     
 ]
@@ -139,7 +139,7 @@ utilisateurController.login = async (req, res) => {
             where: {
                 email: req.body.email
             },
-            include: [Role]
+            include: [Role, Chaine]
         })
         if (!utilisateur) {
             res.status(200).send({code: 401, message:"Adresse Email ou mot de passe incorrect"})

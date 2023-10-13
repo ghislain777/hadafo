@@ -8,7 +8,8 @@
     const emissionController = {}
     
  emissionController.includeEmission = [
-    Chaine,]
+    {model: Chaine}
+   ]
  emissionController.add = async (req, res) => {
         try {
             const response = await Emission.create(req.body)
