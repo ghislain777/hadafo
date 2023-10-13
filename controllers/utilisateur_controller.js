@@ -9,10 +9,8 @@ const {  Utilisateur, Menu, Activite, Privilege, Role, Chaine} = require('../mod
 const utilisateurController = {}
 
 utilisateurController.includeUtilisateur = [
-
         Role, Chaine
-    
-    
+     
 ]
 utilisateurController.add = async (req, res) => {
     try {
@@ -65,7 +63,7 @@ utilisateurController.update = async (req, res) => {
     try {
         const response = await Utilisateur.update(req.body, {
             where: {
-                id: req.params.idcontenuController
+                id: req.params.id
             }
         })
 

@@ -9,7 +9,7 @@ const appService = require('../services/bootstrap');
     const chaineController = {}
     
  chaineController.includeChaine = [
-    Ville,Media, {model:Emission}
+    Ville,Media, "endirect", {model:Emission}
         ]
 
 
