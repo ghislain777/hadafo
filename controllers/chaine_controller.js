@@ -9,7 +9,7 @@ const appService = require('../services/bootstrap');
     const chaineController = {}
     
  chaineController.includeChaine = [
-    Ville,Media, "endirect", {model:Emission}
+    Ville,Media, "Emission", {model:Emission}
         ]
 
 
@@ -17,10 +17,10 @@ chaineController.bootstrap = async (req, res) => {
     try {
         retour = await appService.getBootstrap()
 
-        res.status(200).send(retour)
+        res.status(200).send({chaines:chaines})
     } catch (error) {
-        console.log(err)
-        res.status(500).send(err.message)
+        console.log(error)
+        res.status(500).send(error.message)
     }
 }
 

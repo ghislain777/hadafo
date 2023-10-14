@@ -25,7 +25,7 @@ appService.getBootstrap = () => {
                     model: Animateuremission,
                     include: [Animateur, Emission,]
                 }]
-            }, Media, "endirect"]
+            }, Media, "Emission"]
         })
 
         Promise.all([promiseChaines]).then((data) => {
