@@ -16,6 +16,7 @@ const appService = require('../services/bootstrap');
 chaineController.bootstrap = async (req, res) => {
     try {
         retour = await appService.getBootstrap()
+
         res.status(200).send(retour)
     } catch (error) {
         console.log(err)
