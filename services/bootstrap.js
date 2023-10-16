@@ -15,17 +15,23 @@ appService.getBootstrap = () => {
         const retour = {}
 
         const promiseChaines = Chaine.findAll({
-            where:{
-                actif:true
+            where: {
+                actif: true
             },
             include: [{
                 model: Emission,
-               
                 include: [{
                     model: Animateuremission,
-                    include: [Animateur, Emission,]
+                    include: [Animateur, Emission, ]
                 }]
-            }, Media, "Emission"]
+            }, Media, {
+                model: Emission,
+                as: "Emission",
+                include: [{
+                    model: Animateuremission,
+                    include: [Animateur, Emission, ]
+                }]
+            }]
         })
 
         Promise.all([promiseChaines]).then((data) => {
