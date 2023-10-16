@@ -191,8 +191,20 @@ utilisateurController.login = async (req, res) => {
                         })
                     }
                 });
-                navigation.push(leMenu)
+                if(leMenu.children.length > 0) {
+                    navigation.push(leMenu)
+                }
             });
+
+            // navigation.forEach(menu => {
+            //     if(menu.children == []) {
+            //         delete navigation[menu]
+
+            //     }
+                
+            // });
+
+
             res.status(200).send({ utilisateur: utilisateur, privileges: listeprivileges, navigation: navigation,code:200 })
         }
         else {
