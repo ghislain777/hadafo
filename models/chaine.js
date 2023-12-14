@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             comment: 'Description'
         },
         frequence: {
@@ -60,6 +60,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: "",
             comment: "Fréquence"
         },
+         
         lienradio: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -87,11 +88,13 @@ module.exports = (sequelize, DataTypes) => {
         heuredebut: {
             type: DataTypes.TIME,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
             comment: 'heure de début'
         },
         heurefin: {
             type: DataTypes.TIME,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
             comment: "heure de fin"
         },
 

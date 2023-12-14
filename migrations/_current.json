@@ -179,7 +179,7 @@
                     "seqType": "Sequelize.STRING"
                 },
                 "description": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "comment": "Description",
                     "field": "description",
                     "seqType": "Sequelize.STRING"
@@ -231,12 +231,20 @@
                 },
                 "heuredebut": {
                     "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
                     "comment": "heure de début",
                     "field": "heuredebut",
                     "seqType": "Sequelize.TIME"
                 },
                 "heurefin": {
                     "allowNull": false,
+                    "defaultValue": {
+                        "internal": true,
+                        "value": "Sequelize.NOW"
+                    },
                     "comment": "heure de fin",
                     "field": "heurefin",
                     "seqType": "Sequelize.TIME"
@@ -941,5 +949,5 @@
     "path": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current.json",
     "backupPath": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current_bak.json",
     "exists": true,
-    "revision": 19
+    "revision": 20
 }
