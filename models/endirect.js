@@ -1,5 +1,5 @@
 'use strict';
-
+const socketService = require("../services/socket_service")
 const {
     Model
 } = require('sequelize');
@@ -47,5 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true,
         timestamps: false
     });
+
+
     return Endirect;
 };

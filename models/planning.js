@@ -47,6 +47,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             comment: "heure de fin"
         },
+        emissionfilmee: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
+            comment: "Emission  filmée?"
+        },
         description: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -60,4 +66,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     return Planning;
+    
 };

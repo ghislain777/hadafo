@@ -624,6 +624,15 @@
                     "field": "heurefin",
                     "seqType": "Sequelize.TIME"
                 },
+                "emissionfilmee": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": false
+                    },
+                    "comment": "Emission  filmée?",
+                    "field": "emissionfilmee",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
                 "description": {
                     "allowNull": true,
                     "comment": "Description",
@@ -949,5 +958,5 @@
     "path": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current.json",
     "backupPath": "/home/ghislain/Documents/2023/1-PROJETS/HADAFO/backend/migrations/_current_bak.json",
     "exists": true,
-    "revision": 20
+    "revision": 21
 }

@@ -97,3 +97,9 @@ serverSocket.listen(PORT, () => {
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
+var cron = require('node-cron');
+const directService = require("./services/direct_service")
+cron.schedule('* * * * *', () => {
+    directService.getEmissionsEnDirect()
+  });
