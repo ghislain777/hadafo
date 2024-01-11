@@ -12,7 +12,8 @@
     "database": "aliecard",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  },
+  },      
+  
   "production": {
     "username": "hada_fo",
     "password": "8I05+m%ay046mHtN",
